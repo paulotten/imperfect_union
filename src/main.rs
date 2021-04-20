@@ -234,6 +234,18 @@ unsafe fn advance(bodies: &mut [body; BODIES_COUNT]){
         // live at the same time...
         let foo = two_ref[0]+red_ref[0]+blue_ref[0];
         println!("{}", foo);
+        // paulotten: As a counter example, this fails to compile:
+        /*
+        fn main() {
+            let mut a = 1;
+
+            let r1 = &mut a;
+            let r2 = &mut a;
+
+            let foo = *r1 + *r2;
+            println!("{}", foo);
+        }
+        */
     }
 
     // Use the calculated magnitudes of force to update the velocities for all
